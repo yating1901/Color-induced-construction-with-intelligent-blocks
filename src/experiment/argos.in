@@ -89,26 +89,6 @@
       <body position="-0.16,0.3,0.0" orientation="0,0,0"/>
       <controller config="block"/>
     </block>
-    <block id="block2" debug="false" movable="false">
-      <body position="-0.105,0.3,0.0" orientation="0,0,0"/>
-      <controller config="block"/>
-    </block>
-  <block id="block3" debug="false" movable="false">
-      <body position="-0.055,0.3,0.0" orientation="0,0,0"/>
-      <controller config="block"/>
-    </block>
-  <block id="block4" debug="false" movable="false">
-      <body position="0,0.3,0.0" orientation="0,0,0"/>
-      <controller config="block"/>
-    </block>
-    <block id="block5" debug="false" movable="false">
-      <body position="0.055,0.3,0.0" orientation="0,0,0"/>
-      <controller config="block"/>
-    </block>
-    <block id="block6" debug="false" movable="false">
-      <body position="0.11,0.3,0.0" orientation="0,0,0"/>
-      <controller config="block"/>
-    </block>
     <block id="block8" debug="false" movable="true">
       <body position="0.0,-0.155,0.012" orientation="0,0,0"/>
       <controller config="block"/>
