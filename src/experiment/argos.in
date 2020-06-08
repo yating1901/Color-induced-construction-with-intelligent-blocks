@@ -43,7 +43,7 @@
       <sensors>
         <radios implementation="default" show_rays="false"/>
       </sensors>
-      <params script="@CMAKE_BINARY_DIR@/experiment/block_controller.lua" />
+      <params script="@CMAKE_BINARY_DIR@/experiment/block.lua" />
     </lua_controller>
   </controllers>
 
@@ -58,7 +58,7 @@
     <condition type="timer" id="timer1" value="5">
       <action type="add_entity" delay="5">
         <block id="block7" init_led_color="green">
-          <body position="-0.2,-0.1,0.0" orientation="0,0,0"/>
+          <body position="-0.1,-0.1,0.0" orientation="0,0,0"/>
           <controller config="block"/>
         </block>
       </action>

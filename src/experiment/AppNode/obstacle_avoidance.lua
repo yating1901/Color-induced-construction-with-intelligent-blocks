@@ -76,7 +76,7 @@ local create_obstacle_avoidance_node = function()
                   {
                      time = 90 / 5,
                      func = function()
-                        api.move_with_bearing(0, 5)
+                        api.move_with_bearing(0, -5)
                      end
                   }
                )
