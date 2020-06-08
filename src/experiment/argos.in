@@ -85,17 +85,37 @@
       <body position="-0.0125,0.5,0" orientation="0,0,0" />
     </box>
     <!-- add a fixed seed block -->
-    <block id="block0" debug="false" movable="false">
-      <body position="-0.16,0.3,0.0" orientation="0,0,0"/>
+     <block id="block0" debug="false" movable="false">
+      <body position="-0.005,0.2,0.0" orientation="90,0,0"/>
       <controller config="block"/>
     </block>
-    <block id="block8" debug="false" movable="true">
+    <block id="block1" debug="false" movable="true">
+      <body position="0.305,0.2,0.010" orientation="0,0,0"/>
+      <controller config="block"/>
+    </block>
+    <block id="block2" debug="false" movable="true">
+      <body position="0.0,-0.105,0.010" orientation="0,0,0"/>
+      <controller config="block"/>
+    </block>
+    <block id="block3" debug="false" movable="true">
+      <body position="-0.305,0.2,0.010" orientation="0,0,0"/>
+      <controller config="block"/>
+    </block>
+    <block id="block4" debug="false" movable="true">
       <body position="0.0,-0.155,0.012" orientation="0,0,0"/>
       <controller config="block"/>
     </block>
     <!-- add three builderbots-->
     <builderbot id="builderbot1" debug="false">
-      <body position="0.0,-0.25,0.0" orientation="90,0,0"/>
+      <body position="0.0,-0.2,0.0" orientation="90,0,0"/>
+      <controller config="builderbot"/>
+    </builderbot>
+   <builderbot id="builderbot2" debug="false">
+      <body position="0.4,0.2,0.0" orientation="180,0,0"/>
+      <controller config="builderbot"/>
+    </builderbot>
+   <builderbot id="builderbot3" debug="false">
+      <body position="-0.4,0.2,0.0" orientation="0,0,0"/>
       <controller config="builderbot"/>
     </builderbot>
     <!-- distribute robots -->
