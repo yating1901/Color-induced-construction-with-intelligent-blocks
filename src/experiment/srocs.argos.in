@@ -52,13 +52,31 @@
   <!-- ****************** -->
   <loop_functions library="@CMAKE_BINARY_DIR@/loop_functions/libdi_srocs_loop_functions"
                   label="di_srocs_loop_functions">
-    <condition type="entity" id="block8" position="-0.16,0.3,0.055" threshold="0.005" once="true">
+    <condition type="entity" id="block1" position="0.055,0.2,0.0" threshold="0.005" once="true">
       <action type="add_timer" id="timer1"/>
     </condition>
     <condition type="timer" id="timer1" value="5">
       <action type="add_entity" delay="5">
-        <block id="block7" init_led_color="green">
+        <block id="block10" init_led_color="green">
           <body position="-0.2,-0.1,0.0" orientation="0,0,0"/>
+          <controller config="block"/>
+        </block>
+        </action>
+        <action type="add_entity" delay="6">
+        <block id="block11" init_led_color="green">
+          <body position="0.2,-0.1,0.0" orientation="0,0,0"/>
+          <controller config="block"/>
+        </block>
+        </action>
+        <action type="add_entity" delay="5">
+        <block id="block12" init_led_color="green">
+          <body position="0.2,0.1,0.0" orientation="0,0,0"/>
+          <controller config="block"/>
+        </block>
+        </action>
+        <action type="add_entity" delay="5">
+        <block id="block13" init_led_color="green">
+          <body position="-0.2,0.3,0.0" orientation="0,0,0"/>
           <controller config="block"/>
         </block>
       </action>
@@ -71,18 +89,18 @@
   <!-- *********************** -->
   <!-- * Arena configuration * -->
   <!-- *********************** -->
-   <arena size="1.5, 1.5, 2" center="0, 0, 0.5">
-    <box id="bn" size="0.025,1,0.055" movable="false" mass="10">
-      <body position="0.5,0.0125,0" orientation="0,0,0" />
+   <arena size="3, 3, 2" center="0, 0, 0.5">
+    <box id="bn" size="0.025,2,0.055" movable="false" mass="10">
+      <body position="1,0.0125,0" orientation="0,0,0" />
     </box>
-    <box id="be" size="1,0.025,0.055" movable="false" mass="10">
-      <body position="0.0125,-0.5,0" orientation="0,0,0" />
+    <box id="be" size="2,0.025,0.055" movable="false" mass="10">
+      <body position="0.0125,-1.0,0" orientation="0,0,0" />
     </box>
-    <box id="bs" size="0.025,1,0.055" movable="false" mass="10">
-      <body position="-0.5,-0.0125,0" orientation="0,0,0" />
+    <box id="bs" size="0.025,2,0.055" movable="false" mass="10">
+      <body position="-1,-0.0125,0" orientation="0,0,0" />
     </box>
-    <box id="bw" size="1,0.025,0.055" movable="false" mass="10">
-      <body position="-0.0125,0.5,0" orientation="0,0,0" />
+    <box id="bw" size="2,0.025,0.055" movable="false" mass="10">
+      <body position="-0.0125,1,0" orientation="0,0,0" />
     </box>
     <!-- add a fixed seed block -->
     <block id="block0" debug="false" movable="false">
@@ -102,7 +120,7 @@
       <controller config="block"/>
     </block>
     <block id="block4" debug="false" movable="true">
-      <body position="0.0,-0.155,0.012" orientation="0,0,0"/>
+      <body position="0.0,0.505,0.010" orientation="0,0,0"/>
       <controller config="block"/>
     </block>
     <!-- add three builderbots-->
@@ -116,6 +134,10 @@
     </builderbot>
    <builderbot id="builderbot3" debug="false">
       <body position="-0.4,0.2,0.0" orientation="0,0,0"/>
+      <controller config="builderbot"/>
+    </builderbot>
+    <builderbot id="builderbot4" debug="false">
+      <body position="0.0,0.6,0.0" orientation="270,0,0"/>
       <controller config="builderbot"/>
     </builderbot>
     <!-- distribute robots -->
