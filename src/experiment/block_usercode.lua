@@ -35,11 +35,10 @@ user_code.set_face_color = function(face, color)
    end
 end
 
+
 --define tree structure--
 user_code.tree={15,0,0,0,0}
---user_code.tree={3,2,1,2,0,2,4,2,0}
---user_code.tree={3,2,1,18,0,0,18,0,4,2,0}
---user_code.tree={3,3,1,18,0,0,2,0,18,0,0}
+
 --assign number to faces--
 user_code.face_to_number = {
    north  = 1,
@@ -187,23 +186,38 @@ function user_code.collect_messages()
    user_code.tx_as_target={}
    --collect in the order: R,F,L,T,B
    for index=1, 6 do
-      if index ~= 4 then  --exlcude parent face
+      --if index ~= 4 then  --exlcude parent face
          face_name = user_code.order_to_face[index]
          if user_code.initiatoe_rx_table[face_name] ~= nil then
             for msg_index, msg in pairs(user_code.initiatoe_rx_table[face_name]) do
                table.insert(user_code.tx_as_target,msg)
             end
          end
-      end
+      --end
    end
    table.insert(user_code.tx_as_target, robot.childstate)  --internal configuration
+end
+
+--------extend tree--------
+function user_code.extend_tree()
+   local update_tree = {}
+   local length = #robot.branch_data
+   if #user_code.tx_as_target ==  #robot.branch_data then 
+      for index = 1, length do 
+         if robot.branch_data[index] == 0 then
+            table.insert(update_tree, 2)
+         end
+         table.insert(update_tree,robot.branch_data[index])
+      end
+      robot.branch_data = update_tree
+   end
 end
 
 -- init method --
 function user_code.init()
    robot.isroot = false
    robot.blockstate = "Idle"
-   robot.directional_leds.set_all_colors("green")
+   robot.directional_leds.set_all_colors("black")
    robot.childstate = 0
    robot.branch_data = {} --should be an array
 
@@ -253,25 +267,33 @@ function user_code.step(time)
          robot.directional_leds.set_all_colors("green")
          user_code.collect_messages()
          user_code.allocate_branch()
-         if radio.parent == false then
+         if radio.parent == false and robot.isroot == false then
             radio.initiator_policy = "once"
          end
-         --check if the structure is completed--
-         length = #robot.branch_data
          if robot.isroot == true then
-            if #user_code.tx_as_target == length then 
-               iscompleted = true
-               for index = 1, length  do
-                  iscompleted =  iscompleted and (robot.branch_data[index] == user_code.tx_as_target[length + 1 - index])
-               end
-            end
-            if iscompleted == true then
-               robot.directional_leds.set_all_colors("blue")
-               user_code.tree={15,2,0,2,0,2,0,2,0}
-            end
+            radio.initiator_policy = "once"
          end
       end
-
+   end
+   if robot.isroot == true then
+      --check if the structure is completed--
+      length = #robot.branch_data
+      if #user_code.tx_as_target == length then 
+         iscompleted = true
+         for index = 1, length  do
+            iscompleted =  iscompleted and (robot.branch_data[index] == user_code.tx_as_target[length + 1 - index])
+         end
+      end
+      if iscompleted == true then
+         robot.directional_leds.set_all_colors("blue")
+      --[[   print("#user_code.tx_as_target", #user_code.tx_as_target)
+         print("#robot.branch_data", #robot.branch_data)
+         for index, key in pairs(robot.branch_data) do 
+            print(index,key)
+         end
+      --]]
+         user_code.extend_tree()
+      end
    end
 end
 
